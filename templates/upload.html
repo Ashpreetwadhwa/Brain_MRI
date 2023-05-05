@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image">
+            <img src="{{ url_for('static',filename=filepath) }}" alt="">
+        </div>
+        </div>
+            {% if 0==data %}<p>this is having no tumor</p>
+            {% elif 1==data %}<p>this is having tumor</p>
+            {% endif %}
+
+
+</body>
+</html>

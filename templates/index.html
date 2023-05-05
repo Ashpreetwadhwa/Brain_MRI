@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Brain Tumor Prediction</title>
+    <style>
+      /* Center all the content */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* Style the photo preview box */
+      #photo-preview {
+        width: 300px;
+        height: 300px;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #photo-preview img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      /* Style the "Predict" button */
+      #predict-button {
+        margin-top: 10px;
+        font-size: 1.2em;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #1abc9c;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      #predict-button:disabled {
+        background-color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Upload and Preview a Photo</h1>
+      <form id="photo-form" action="/upload" method="post" enctype="multipart/form-data">
+        <label for="photo-upload">Select a photo:</label>
+        <input type="file" id="photo-upload" name="photo-upload" accept="image/*" onchange="previewPhoto(event)">
+        <div id="photo-preview"></div>
+        <br>
+        <button type="submit" id="predict-button" disabled>Predict</button>
+      </form>
+    </div>
+
+    <script>
+      function previewPhoto(event) {
+        // Get the uploaded photo and create a URL for it
+        const file = event.target.files[0];
+        const url = URL.createObjectURL(file);
+
+        // Create an <img> element to display the photo
+        const img = document.createElement("img");
+        img.src = url;
+
+        // Add the <img> element to the preview container
+        const previewContainer = document.getElementById("photo-preview");
+        previewContainer.innerHTML = "";
+        previewContainer.appendChild(img);
+
+        // Enable the "Predict" button
+        const predictButton = document.getElementById("predict-button");
+        predictButton.disabled = false;
+      }
+    </script>
+  </body>
+</html>
